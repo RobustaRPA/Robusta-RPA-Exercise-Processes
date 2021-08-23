@@ -1,7 +1,14 @@
 # sample-processes
 
-https://www.youtube.com/watch?v=gFAfMnxQr84
 
+<div align="center">
+      <a href="https://www.youtube.com/watch?v=gFAfMnxQr84">
+     <img 
+      src="https://user-images.githubusercontent.com/87966919/130401926-17ccf307-3942-414b-bef5-e49bcf641781.jpg" 
+      alt="Robusta" 
+      style="width:100%;">
+      </a>
+    </div>
 
 `Hello there.` 
 
@@ -38,8 +45,15 @@ https://www.youtube.com/watch?v=gFAfMnxQr84
 `15-) We have completed our How To video. I hope it was useful for you. Hope to see you again.`
 
 
-https://www.youtube.com/watch?v=cRY6BupUSSE&t=10s
-
+<div align="center">
+      <a href="https://www.youtube.com/watch?v=cRY6BupUSSE&t=10s">
+     <img 
+      src="https://user-images.githubusercontent.com/87966919/130401638-5fe5aaf0-13d9-4ad8-a407-994216cf2db0.jpg" 
+      alt="Robusta" 
+      style="width:100%;">
+      </a>
+    </div>
+    
     Hello there,
     
     In this video, we will show you how to design a sample process that includes e-mail operations with Robusta RPA tool step by step. In our process, we will first connect to an e-mail account and search for unread e-mails with a specific subject and an attached file. In the next step, we will forward each matching e-mail which meets certain condition to another e-mail account. For the e-mails which do not meet the condition, we will reply to the sender that the request is invalid.
@@ -70,6 +84,12 @@ https://www.youtube.com/watch?v=cRY6BupUSSE&t=10s
 
     13-) We came to the end of our How To. I hope it was useful for you.
 
-https://www.youtube.com/watch?v=R2Z-9_0tDIw&t=21s
-
+<div align="center">
+      <a href="https://www.youtube.com/watch?v=R2Z-9_0tDIw&t=21s">
+     <img 
+      src="https://user-images.githubusercontent.com/87966919/130402017-0f64271f-3d01-4bb4-95ab-6c08be38f75f.jpg" 
+      alt="Robusta" 
+      style="width:100%;">
+      </a>
+    </div>
 In this video, we will show you an RPA process developed by roboosta RPA tool which allows you design no-code RPA processes. In this automation process, we will open booking.com website and search the ticket prices for a given flight route and dates. Among the listed ticket prices, the price which is marked as ‘Best’ option will be determined and shared by clicking the share link and populating necessary information on the popup window. Let’s run the process and see how the robot works. The process is successfully scheduled and will run in few seconds on the robot. Now the process is running and the operations in the process flow is being performed by the robot. Flight route and dates are populated on the page. And search button is clicked. After search results are loaded, the share link is clicked for the price given as best option. On the popup window, all the fields are populated. And share button is clicked. After the sharing is done, the process is completed. Let’s check our email for the shared ticket price. As you see we got the email from booking website. Our RPA process is successfully run.
