@@ -1,5 +1,6 @@
 # sample-processes
 
+## Excel Automation using Robusta
 
 <div align="center">
       <a href="https://www.youtube.com/watch?v=gFAfMnxQr84">
@@ -44,6 +45,7 @@
 
       15-) We have completed our How To video. I hope it was useful for you. Hope to see you again.`
 
+## Email automation using Robusta RPA
 
 <div align="center">
       <a href="https://www.youtube.com/watch?v=cRY6BupUSSE&t=10s">
@@ -83,6 +85,8 @@
     12-) Now let’s run our process by clicking the Run button. Since the activities used in this process work at the backend, we do not see any action on the screen. As seen on this screen, our process is completed successfully. You can follow the steps of the process and information about the variables in the process on this screen. As a result, the attachments are downloaded to the specified folder and the e-mail is successfully forwarded to our e-mail account.
 
     13-) We came to the end of our How To. I hope it was useful for you.
+
+## Price comparison on Booking.com with Robusta RPA
 
 <div align="center">
       <a href="https://www.youtube.com/watch?v=R2Z-9_0tDIw&t=21s">
