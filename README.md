@@ -94,5 +94,7 @@
     </div>
 
       In this video, we will show you an RPA process developed by roboosta RPA tool which allows you design no-code RPA processes. In this automation process, we will open booking.com website and search the ticket prices for a given flight route and dates. Among the listed ticket prices, the price which is marked as ‘Best’ option will be determined and shared by clicking the share link and populating necessary information on the popup window. 
+      
       Let’s run the process and see how the robot works. The process is successfully scheduled and will run in few seconds on the robot. Now the process is running and the operations in the process flow is being performed by the robot. Flight route and dates are populated on the page. And search button is clicked. After search results are loaded, the share link is clicked for the price given as best option. 
+      
       On the popup window, all the fields are populated. And share button is clicked. After the sharing is done, the process is completed. Let’s check our email for the shared ticket price. As you see we got the email from booking website. Our RPA process is successfully run.
