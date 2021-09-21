@@ -16,7 +16,7 @@
 
 You can download process explaining document as a .pdf file [Excel_automation_using_with_robusta.pdf](file/Excel_automation_using_with_robusta.pdf)
 
-You can download application xlsx file as a .zip file [Flight_Routes_Request.zip](/file/Flight_Routes_Request.zip)
+You can download application excel file as a .xlsx file [Flight_Routes_Request.xlsx](/file/Flight_Routes_Request.xlsx)
 
 
 ## Email automation using Robusta RPA
