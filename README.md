@@ -31,6 +31,8 @@ You can download tutorial sample excel file as a .xlsx file [Flight_Routes_Reque
     
 You can download process explaining document as a .pdf file [EMail_automation_process_with_RobustaRPA.pdf](file/EMail_automation_process_with_RobustaRPA.pdf)
 
+You can download application file by right click and save as a .xml file [Email_Requests_How-To.xml](https://github.com/RobustaRPA/sample-processes/raw/main/files/Email_Requests_How-To.xml)
+
 
 ## Price comparison on Booking.com with Robusta RPA
 

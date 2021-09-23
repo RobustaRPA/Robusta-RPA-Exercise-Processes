@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://flowable.org/test">
+  <process id="EmailRequestsHow-To" name="Email Requests How-To" isExecutable="true">
+    <dataObject id="minBpPriority" name="minBpPriority" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>51</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="humanEffort" name="humanEffort" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>0</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="outputPath" name="outputPath" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>C:\RobustaDemoProjects\BookingDemo\output\</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="successPath" name="successPath" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>C:\RobustaDemoProjects\BookingDemo\success\</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="failPath" name="failPath" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>C:\RobustaDemoProjects\BookingDemo\fail\</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="password" name="password" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value></flowable:value>
+      </extensionElements>
+    </dataObject>
+    <startEvent id="startEvent1" flowable:formFieldValidation="true"></startEvent>
+    <serviceTask id="sid-521440C5-7665-4AE9-8377-78ECEC73EB28" name="Imap/Smtp connection: Connect to e-mail account" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.mail.MailImapSmtpConnectTask" flowable:type="CustomMailImapSmtpConnect">
+      <extensionElements>
+        <flowable:field name="connectionName">
+          <flowable:string><![CDATA[connectionName]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultConnectionId">
+          <flowable:string><![CDATA[testCon]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="imapHost">
+          <flowable:string><![CDATA[imap.gmail.com]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="imapPort">
+          <flowable:string><![CDATA[993]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="imapUser">
+          <flowable:string><![CDATA[robustamailtest@gmail.com]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="imapPass">
+          <flowable:expression><![CDATA[${password}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="imapSsl">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="imapTlsEnabled">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="imapTlsRequired">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="smtpHost">
+          <flowable:string><![CDATA[smtp.gmail.com]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="smtpPort">
+          <flowable:string><![CDATA[587]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="smtpUser">
+          <flowable:string><![CDATA[robustamailtest@gmail.com]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="smtpPass">
+          <flowable:expression><![CDATA[${password}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="smtpSsl">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="smtpTlsEnabled">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="smtpTlsRequired">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-A0F95D9C-F248-4184-A2E3-B7F3375035DA" sourceRef="startEvent1" targetRef="sid-521440C5-7665-4AE9-8377-78ECEC73EB28"></sequenceFlow>
+    <serviceTask id="sid-204A1837-42A2-487C-A5DE-7BDCD2DA15C4" name="Search: Emails for flight routes price request" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.mail.MailSearchTask" flowable:type="CustomMailSearch">
+      <extensionElements>
+        <flowable:field name="connectionId">
+          <flowable:expression><![CDATA[${testCon}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="folder">
+          <flowable:string><![CDATA[INBOX]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="hasAttachment">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="limit">
+          <flowable:string><![CDATA[10]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="minDate">
+          <flowable:expression><![CDATA[${minDate}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="subject">
+          <flowable:string><![CDATA[Flight Routes]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="unread">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultresultSetId">
+          <flowable:string><![CDATA[emailSearchDS]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-1BC52C19-2423-4949-B516-189B88466FFD" sourceRef="sid-521440C5-7665-4AE9-8377-78ECEC73EB28" targetRef="sid-B50E8DA5-95EF-400E-9E65-70429B3E3334"></sequenceFlow>
+    <serviceTask id="sid-01F83BE7-88AE-40EE-A90C-C1B72D4891BC" name="Get size: Request count" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.resultset.ResultSetGetSizeTask" flowable:type="CustomResultSetGetSize">
+      <extensionElements>
+        <flowable:field name="id">
+          <flowable:expression><![CDATA[${emailSearchDS}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="sizeType">
+          <flowable:string><![CDATA[ROW]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultvariable">
+          <flowable:string><![CDATA[emailSearchDSSize]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-82E13601-3A2A-4691-9730-A6EF1B065F02" sourceRef="sid-204A1837-42A2-487C-A5DE-7BDCD2DA15C4" targetRef="sid-01F83BE7-88AE-40EE-A90C-C1B72D4891BC"></sequenceFlow>
+    <sequenceFlow id="sid-14F5B41D-2C1E-4A4A-BC4D-CC2E4FDEF6BC" sourceRef="sid-01F83BE7-88AE-40EE-A90C-C1B72D4891BC" targetRef="sid-4F8C906B-3C74-4777-BB99-F34A0950739D"></sequenceFlow>
+    <endEvent id="sid-09198689-22BE-4675-B999-0838CF95DA98"></endEvent>
+    <scriptTask id="sid-B50E8DA5-95EF-400E-9E65-70429B3E3334" name="Script task : Find three days ago" flowable:async="true" scriptFormat="javascript" flowable:autoStoreVariables="false">
+      <script><![CDATA[var threeDaysAgo = new Date();
+threeDaysAgo.setDate(threeDaysAgo.getDate()-3);
+var date = threeDaysAgo.toLocaleDateString();
+var splitDate = date.split("-");
+var year = splitDate[0];
+var month = splitDate[1];
+var day = splitDate[2];
+var minDate = day+"."+month+"."+year;
+execution.setVariable("minDate", minDate);]]></script>
+    </scriptTask>
+    <sequenceFlow id="sid-C98239A7-BDDD-442A-953A-A2C712C21C46" sourceRef="sid-B50E8DA5-95EF-400E-9E65-70429B3E3334" targetRef="sid-204A1837-42A2-487C-A5DE-7BDCD2DA15C4"></sequenceFlow>
+    <subProcess id="sid-AB10D9C4-8338-4DB2-8C75-51B98B91FFE3" name="Loop for each e-mail request" flowable:async="true" flowable:exclusive="false">
+      <multiInstanceLoopCharacteristics isSequential="true">
+        <loopCardinality>${emailSearchDSSize}</loopCardinality>
+      </multiInstanceLoopCharacteristics>
+      <startEvent id="sid-67CFF8F1-B97D-465E-A5F1-A91A58049F5F" flowable:formFieldValidation="true"></startEvent>
+      <serviceTask id="sid-A7B7E306-A550-4C20-A248-3B1DD085221A" name="Read/Save/Attachment: Download to 'archieve' folder" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.mail.MailReadTask" flowable:type="CustomMailRead">
+        <extensionElements>
+          <flowable:field name="connectionId">
+            <flowable:expression><![CDATA[${testCon}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="searchId">
+            <flowable:expression><![CDATA[${emailSearchDS}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="mailNo">
+            <flowable:expression><![CDATA[${loopCounter}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="markAsRead">
+            <flowable:string><![CDATA[true]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="markAsDeleted">
+            <flowable:string><![CDATA[false]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="saveAttachments">
+            <flowable:string><![CDATA[true]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="saveMail">
+            <flowable:string><![CDATA[false]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="savePath">
+            <flowable:string><![CDATA[C:\RobustaDemoProjects\BookingDemo\archive]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="resultresultSetId">
+            <flowable:string><![CDATA[AttachmentDS]]></flowable:string>
+          </flowable:field>
+        </extensionElements>
+      </serviceTask>
+      <exclusiveGateway id="sid-56099D65-A725-4730-8EC8-78342519D353" flowable:async="true" flowable:exclusive="false" default="sid-C9E6A063-0CFD-4479-99AD-3A6546339007"></exclusiveGateway>
+      <serviceTask id="sid-D7E8E636-4DEF-4D77-A13E-66E2F0CCD552" name="Get size: Attached file count" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.resultset.ResultSetGetSizeTask" flowable:type="CustomResultSetGetSize">
+        <extensionElements>
+          <flowable:field name="id">
+            <flowable:expression><![CDATA[${AttachmentDS}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="sizeType">
+            <flowable:string><![CDATA[ROW]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="resultvariable">
+            <flowable:string><![CDATA[listFileDSSize]]></flowable:string>
+          </flowable:field>
+        </extensionElements>
+      </serviceTask>
+      <serviceTask id="sid-0E995BFB-953E-46BF-9E70-ADDB09570787" name="Reply: Request is not valid" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.mail.MailReplyTask" flowable:type="CustomMailReply">
+        <extensionElements>
+          <flowable:field name="connectionId">
+            <flowable:expression><![CDATA[${testCon}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="searchId">
+            <flowable:expression><![CDATA[${emailSearchDS}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="mailNo">
+            <flowable:expression><![CDATA[${loopCounter}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="message">
+            <flowable:string><![CDATA[Birden fazla ekli dosya işlenemez]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="isHtml">
+            <flowable:string><![CDATA[true]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="isReplyAll">
+            <flowable:string><![CDATA[true]]></flowable:string>
+          </flowable:field>
+        </extensionElements>
+      </serviceTask>
+      <endEvent id="sid-1A5E29C2-AB7A-44B1-804D-1E19BB132DA6"></endEvent>
+      <serviceTask id="sid-BC6AC720-E453-420E-B376-EA706AAB385C" name="Forward" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.mail.MailForwardTask" flowable:type="CustomMailForward">
+        <extensionElements>
+          <flowable:field name="connectionId">
+            <flowable:expression><![CDATA[${testCon}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="searchId">
+            <flowable:expression><![CDATA[${emailSearchDS}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="mailNo">
+            <flowable:expression><![CDATA[${loopCounter}]]></flowable:expression>
+          </flowable:field>
+          <flowable:field name="from">
+            <flowable:string><![CDATA[robustamailtest@gmail.com]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="to">
+            <flowable:string><![CDATA[robustamailtest2@gmail.com]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="message">
+            <flowable:string><![CDATA[This email is forwarded by Robusta RPA tool.]]></flowable:string>
+          </flowable:field>
+          <flowable:field name="isHtml">
+            <flowable:string><![CDATA[true]]></flowable:string>
+          </flowable:field>
+        </extensionElements>
+      </serviceTask>
+      <endEvent id="sid-7311CAB8-DB17-4793-9971-702FB21FC799"></endEvent>
+      <sequenceFlow id="sid-6EA45B89-D0FA-4DDE-B696-FB14EBF00661" sourceRef="sid-A7B7E306-A550-4C20-A248-3B1DD085221A" targetRef="sid-D7E8E636-4DEF-4D77-A13E-66E2F0CCD552"></sequenceFlow>
+      <sequenceFlow id="sid-B9C3EC89-1E16-4C2E-8FE3-38E5A1719C06" sourceRef="sid-D7E8E636-4DEF-4D77-A13E-66E2F0CCD552" targetRef="sid-56099D65-A725-4730-8EC8-78342519D353"></sequenceFlow>
+      <sequenceFlow id="sid-1417FC78-D2FB-49B1-9B37-9FF42E8E5C95" sourceRef="sid-67CFF8F1-B97D-465E-A5F1-A91A58049F5F" targetRef="sid-A7B7E306-A550-4C20-A248-3B1DD085221A"></sequenceFlow>
+      <sequenceFlow id="sid-D336A033-132B-4CF8-ADAB-2BD8B31F53D0" sourceRef="sid-0E995BFB-953E-46BF-9E70-ADDB09570787" targetRef="sid-1A5E29C2-AB7A-44B1-804D-1E19BB132DA6"></sequenceFlow>
+      <sequenceFlow id="sid-C9E6A063-0CFD-4479-99AD-3A6546339007" name="1 File" sourceRef="sid-56099D65-A725-4730-8EC8-78342519D353" targetRef="sid-BC6AC720-E453-420E-B376-EA706AAB385C"></sequenceFlow>
+      <sequenceFlow id="sid-DF326D9D-334B-4F6A-8148-650F66FDDAF1" sourceRef="sid-BC6AC720-E453-420E-B376-EA706AAB385C" targetRef="sid-7311CAB8-DB17-4793-9971-702FB21FC799"></sequenceFlow>
+      <sequenceFlow id="sid-840C0A95-BE33-4F57-ABAA-03FD92DAA32C" name="&gt;=2 File" sourceRef="sid-56099D65-A725-4730-8EC8-78342519D353" targetRef="sid-0E995BFB-953E-46BF-9E70-ADDB09570787">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${listFileDSSize>=2}]]></conditionExpression>
+      </sequenceFlow>
+    </subProcess>
+    <sequenceFlow id="sid-66742F9C-F7E2-48FB-AA63-E574E7A7A403" name="No request" sourceRef="sid-4F8C906B-3C74-4777-BB99-F34A0950739D" targetRef="sid-09198689-22BE-4675-B999-0838CF95DA98">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${emailSearchDSSize==0}]]></conditionExpression>
+    </sequenceFlow>
+    <endEvent id="sid-D7E80E3E-0498-48B3-9F03-6AEFC2F33BB2"></endEvent>
+    <sequenceFlow id="sid-BDA3D8F8-88FA-4602-A57E-4243F529F89A" sourceRef="sid-AB10D9C4-8338-4DB2-8C75-51B98B91FFE3" targetRef="sid-D7E80E3E-0498-48B3-9F03-6AEFC2F33BB2"></sequenceFlow>
+    <exclusiveGateway id="sid-4F8C906B-3C74-4777-BB99-F34A0950739D" flowable:async="true" flowable:exclusive="false" default="sid-7CE48B48-B590-4C7C-B775-955A02140E7A"></exclusiveGateway>
+    <sequenceFlow id="sid-7CE48B48-B590-4C7C-B775-955A02140E7A" name="Request found" sourceRef="sid-4F8C906B-3C74-4777-BB99-F34A0950739D" targetRef="sid-AB10D9C4-8338-4DB2-8C75-51B98B91FFE3"></sequenceFlow>
+    <textAnnotation id="sid-1F9BF3A4-FB16-4D84-AB80-ADE16D8E1DC9">
+      <text>Search e-mails with the subject containing 'Flight Routes'.</text>
+    </textAnnotation>
+    <association id="sid-3B3319FC-089D-4974-A280-D97DCEA01CD1" sourceRef="sid-204A1837-42A2-487C-A5DE-7BDCD2DA15C4" targetRef="sid-1F9BF3A4-FB16-4D84-AB80-ADE16D8E1DC9" associationDirection="None"></association>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_EmailRequestsHow-To">
+    <bpmndi:BPMNPlane bpmnElement="EmailRequestsHow-To" id="BPMNPlane_EmailRequestsHow-To">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="55.0" y="147.74852233599893"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-521440C5-7665-4AE9-8377-78ECEC73EB28" id="BPMNShape_sid-521440C5-7665-4AE9-8377-78ECEC73EB28">
+        <omgdc:Bounds height="80.0" width="100.0" x="135.0" y="122.74852233599896"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-204A1837-42A2-487C-A5DE-7BDCD2DA15C4" id="BPMNShape_sid-204A1837-42A2-487C-A5DE-7BDCD2DA15C4">
+        <omgdc:Bounds height="80.0" width="100.0" x="450.0" y="122.74852233599896"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-01F83BE7-88AE-40EE-A90C-C1B72D4891BC" id="BPMNShape_sid-01F83BE7-88AE-40EE-A90C-C1B72D4891BC">
+        <omgdc:Bounds height="80.0" width="100.0" x="600.0" y="122.74852233599896"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-09198689-22BE-4675-B999-0838CF95DA98" id="BPMNShape_sid-09198689-22BE-4675-B999-0838CF95DA98">
+        <omgdc:Bounds height="28.0" width="28.0" x="896.0000000000001" y="148.74852233599896"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-B50E8DA5-95EF-400E-9E65-70429B3E3334" id="BPMNShape_sid-B50E8DA5-95EF-400E-9E65-70429B3E3334">
+        <omgdc:Bounds height="80.0" width="100.0" x="300.0" y="122.74852233599896"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-AB10D9C4-8338-4DB2-8C75-51B98B91FFE3" id="BPMNShape_sid-AB10D9C4-8338-4DB2-8C75-51B98B91FFE3">
+        <omgdc:Bounds height="478.2754065594213" width="617.9771199392908" x="240.0" y="285.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-67CFF8F1-B97D-465E-A5F1-A91A58049F5F" id="BPMNShape_sid-67CFF8F1-B97D-465E-A5F1-A91A58049F5F">
+        <omgdc:Bounds height="30.0" width="30.0" x="303.0" y="343.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A7B7E306-A550-4C20-A248-3B1DD085221A" id="BPMNShape_sid-A7B7E306-A550-4C20-A248-3B1DD085221A">
+        <omgdc:Bounds height="80.0" width="100.0" x="480.0" y="302.7892246872414"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-56099D65-A725-4730-8EC8-78342519D353" id="BPMNShape_sid-56099D65-A725-4730-8EC8-78342519D353">
+        <omgdc:Bounds height="40.0" width="40.0" x="724.4033116963286" y="470.1851922106783"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-D7E8E636-4DEF-4D77-A13E-66E2F0CCD552" id="BPMNShape_sid-D7E8E636-4DEF-4D77-A13E-66E2F0CCD552">
+        <omgdc:Bounds height="80.0" width="100.0" x="694.4033116963286" y="318.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-0E995BFB-953E-46BF-9E70-ADDB09570787" id="BPMNShape_sid-0E995BFB-953E-46BF-9E70-ADDB09570787">
+        <omgdc:Bounds height="80.0" width="100.0" x="694.4033116963286" y="585.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-1A5E29C2-AB7A-44B1-804D-1E19BB132DA6" id="BPMNShape_sid-1A5E29C2-AB7A-44B1-804D-1E19BB132DA6">
+        <omgdc:Bounds height="28.0" width="28.0" x="730.4033116963286" y="717.098781824916"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-BC6AC720-E453-420E-B376-EA706AAB385C" id="BPMNShape_sid-BC6AC720-E453-420E-B376-EA706AAB385C">
+        <omgdc:Bounds height="80.0" width="100.0" x="360.0" y="525.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-7311CAB8-DB17-4793-9971-702FB21FC799" id="BPMNShape_sid-7311CAB8-DB17-4793-9971-702FB21FC799">
+        <omgdc:Bounds height="28.0" width="28.0" x="396.6455218387047" y="665.812333283909"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-1F9BF3A4-FB16-4D84-AB80-ADE16D8E1DC9" id="BPMNShape_sid-1F9BF3A4-FB16-4D84-AB80-ADE16D8E1DC9">
+        <omgdc:Bounds height="71.0" width="207.0" x="525.0" y="15.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-3B3319FC-089D-4974-A280-D97DCEA01CD1" id="BPMNShape_sid-3B3319FC-089D-4974-A280-D97DCEA01CD1">
+        <omgdc:Bounds height="71.81006715941274" width="15.993543982801896" x="509.0064560171981" y="50.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-D7E80E3E-0498-48B3-9F03-6AEFC2F33BB2" id="BPMNShape_sid-D7E80E3E-0498-48B3-9F03-6AEFC2F33BB2">
+        <omgdc:Bounds height="28.0" width="28.0" x="930.0" y="563.2107753127586"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-4F8C906B-3C74-4777-BB99-F34A0950739D" id="BPMNShape_sid-4F8C906B-3C74-4777-BB99-F34A0950739D">
+        <omgdc:Bounds height="40.0" width="40.0" x="735.0" y="142.74852233599893"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-A0F95D9C-F248-4184-A2E3-B7F3375035DA" id="BPMNEdge_sid-A0F95D9C-F248-4184-A2E3-B7F3375035DA">
+        <omgdi:waypoint x="84.94999861835541" y="162.74852233599896"></omgdi:waypoint>
+        <omgdi:waypoint x="70.0" y="162.74852233599893"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B9C3EC89-1E16-4C2E-8FE3-38E5A1719C06" id="BPMNEdge_sid-B9C3EC89-1E16-4C2E-8FE3-38E5A1719C06">
+        <omgdi:waypoint x="744.4033116963286" y="397.95000000000005"></omgdi:waypoint>
+        <omgdi:waypoint x="744.4033116963286" y="470.1851922106783"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-840C0A95-BE33-4F57-ABAA-03FD92DAA32C" id="BPMNEdge_sid-840C0A95-BE33-4F57-ABAA-03FD92DAA32C">
+        <omgdi:waypoint x="744.4033116963286" y="510.1277986560615"></omgdi:waypoint>
+        <omgdi:waypoint x="744.4033116963286" y="585.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C9E6A063-0CFD-4479-99AD-3A6546339007" id="BPMNEdge_sid-C9E6A063-0CFD-4479-99AD-3A6546339007">
+        <omgdi:waypoint x="725.1397566057044" y="490.91979600778075"></omgdi:waypoint>
+        <omgdi:waypoint x="425.0" y="502.39596752343687"></omgdi:waypoint>
+        <omgdi:waypoint x="419.5720671064494" y="525.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-3B3319FC-089D-4974-A280-D97DCEA01CD1" id="BPMNEdge_sid-3B3319FC-089D-4974-A280-D97DCEA01CD1">
+        <omgdi:waypoint x="508.89766724064657" y="122.74852233599896"></omgdi:waypoint>
+        <omgdi:waypoint x="525.0" y="50.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-82E13601-3A2A-4691-9730-A6EF1B065F02" id="BPMNEdge_sid-82E13601-3A2A-4691-9730-A6EF1B065F02">
+        <omgdi:waypoint x="549.949999999945" y="162.74852233599896"></omgdi:waypoint>
+        <omgdi:waypoint x="599.9999999999861" y="162.74852233599896"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-1BC52C19-2423-4949-B516-189B88466FFD" id="BPMNEdge_sid-1BC52C19-2423-4949-B516-189B88466FFD">
+        <omgdi:waypoint x="234.9499999998897" y="162.74852233599896"></omgdi:waypoint>
+        <omgdi:waypoint x="300.0" y="162.74852233599896"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-14F5B41D-2C1E-4A4A-BC4D-CC2E4FDEF6BC" id="BPMNEdge_sid-14F5B41D-2C1E-4A4A-BC4D-CC2E4FDEF6BC">
+        <omgdi:waypoint x="699.9499999999994" y="162.74852233599896"></omgdi:waypoint>
+        <omgdi:waypoint x="650.0" y="162.74852233599893"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-66742F9C-F7E2-48FB-AA63-E574E7A7A403" id="BPMNEdge_sid-66742F9C-F7E2-48FB-AA63-E574E7A7A403">
+        <omgdi:waypoint x="774.9435686652531" y="162.74852233599896"></omgdi:waypoint>
+        <omgdi:waypoint x="896.0000000000001" y="162.74852233599896"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-BDA3D8F8-88FA-4602-A57E-4243F529F89A" id="BPMNEdge_sid-BDA3D8F8-88FA-4602-A57E-4243F529F89A">
+        <omgdi:waypoint x="857.9271199391577" y="565.0"></omgdi:waypoint>
+        <omgdi:waypoint x="893.9885599696454" y="565.0"></omgdi:waypoint>
+        <omgdi:waypoint x="893.9885599696454" y="577.2107753127586"></omgdi:waypoint>
+        <omgdi:waypoint x="930.0" y="577.2107753127586"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-7CE48B48-B590-4C7C-B775-955A02140E7A" id="BPMNEdge_sid-7CE48B48-B590-4C7C-B775-955A02140E7A">
+        <omgdi:waypoint x="755.0" y="182.68451756726847"></omgdi:waypoint>
+        <omgdi:waypoint x="755.0" y="233.87426116799946"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0000000000001" y="233.87426116799946"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0000000000001" y="285.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-6EA45B89-D0FA-4DDE-B696-FB14EBF00661" id="BPMNEdge_sid-6EA45B89-D0FA-4DDE-B696-FB14EBF00661">
+        <omgdi:waypoint x="579.9499999999999" y="347.78038640791505"></omgdi:waypoint>
+        <omgdi:waypoint x="652.2016558481644" y="355.0"></omgdi:waypoint>
+        <omgdi:waypoint x="652.2016558481644" y="370.2107753127586"></omgdi:waypoint>
+        <omgdi:waypoint x="694.4033116963282" y="364.61515480672824"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-1417FC78-D2FB-49B1-9B37-9FF42E8E5C95" id="BPMNEdge_sid-1417FC78-D2FB-49B1-9B37-9FF42E8E5C95">
+        <omgdi:waypoint x="332.8477232574087" y="359.7517982918949"></omgdi:waypoint>
+        <omgdi:waypoint x="421.5" y="370.2107753127586"></omgdi:waypoint>
+        <omgdi:waypoint x="421.5" y="355.0"></omgdi:waypoint>
+        <omgdi:waypoint x="479.99999999999994" y="348.4106829994284"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-D336A033-132B-4CF8-ADAB-2BD8B31F53D0" id="BPMNEdge_sid-D336A033-132B-4CF8-ADAB-2BD8B31F53D0">
+        <omgdi:waypoint x="744.4033116963286" y="664.9499999999999"></omgdi:waypoint>
+        <omgdi:waypoint x="744.4033116963286" y="717.098781824916"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-C98239A7-BDDD-442A-953A-A2C712C21C46" id="BPMNEdge_sid-C98239A7-BDDD-442A-953A-A2C712C21C46">
+        <omgdi:waypoint x="399.9499999999581" y="162.74852233599896"></omgdi:waypoint>
+        <omgdi:waypoint x="450.0" y="162.74852233599896"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-DF326D9D-334B-4F6A-8148-650F66FDDAF1" id="BPMNEdge_sid-DF326D9D-334B-4F6A-8148-650F66FDDAF1">
+        <omgdi:waypoint x="410.22461521962526" y="604.9499999999999"></omgdi:waypoint>
+        <omgdi:waypoint x="410.5665614839664" y="665.812377013264"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
