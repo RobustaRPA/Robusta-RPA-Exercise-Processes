@@ -12,11 +12,10 @@
     </div>
     
 
-?? REMOVE ?? You can download video speech as text file [Email automation using Robusta RPA.docx](https://github.com/RobustaRPA/sample-processes/files/7038196/Email.automation.using.Robusta.RPA.docx)
 
-You can download process explaining document as a .pdf file [Excel_automation_using_with_robusta.pdf](https://github.com/RobustaRPA/sample-processes/raw/main/file/Excel_automation_using_with_robusta.pdf)
+You can download process explaining document as a .pdf file [Excel_automation_using_with_robusta.pdf](file/Excel_automation_using_with_robusta.pdf)
 
-You can download application excel file as a .xlsx file [Flight_Routes_Request.xlsx](https://github.com/RobustaRPA/sample-processes/raw/main/file/Flight_Routes_Request.xlsx)
+You can download tutorial sample excel file as a .xlsx file [Flight_Routes_Request.xlsx](https://github.com/RobustaRPA/sample-processes/blop/main/file/Flight_Routes_Request.xlsx)
 
 
 ## Email automation using Robusta RPA
@@ -30,7 +29,7 @@ You can download application excel file as a .xlsx file [Flight_Routes_Request.x
       </a>
     </div>
     
- You can download video speech as text file [Excel Automation using Robusta.docx](https://github.com/RobustaRPA/sample-processes/files/7038204/Excel.Automation.using.Robusta.docx)
+You can download process explaining document as a .pdf file [EMail_automation_process_with_RobustaRPA.pdf](file/EMail_automation_process_with_RobustaRPA.pdf)
 
 
 ## Price comparison on Booking.com with Robusta RPA
@@ -44,4 +43,4 @@ You can download application excel file as a .xlsx file [Flight_Routes_Request.x
       </a>
     </div>
 
-You can download video speech as text file [Price comparison on Booking.com with Robusta RPA.docx](https://github.com/RobustaRPA/sample-processes/files/7038205/Price.comparison.on.Booking.com.with.Robusta.RPA.docx)
+You can download process explaining document as a .pdf file [Web_Application_Process_using_Robusta.pdf](file/Web_Application_Process_using_Robusta.pdf)
