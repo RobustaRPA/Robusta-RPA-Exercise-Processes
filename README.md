@@ -15,9 +15,9 @@
 
 You can download process explaining document as a .pdf file [Excel_automation_using_with_robusta.pdf](file/Excel_automation_using_with_robusta.pdf)
 
-You can download tutorial sample excel file as a .xlsx file [Flight_Routes_Request.xlsx](https://github.com/RobustaRPA/sample-processes/blop/main/file/Flight_Routes_Request.xlsx)
+You can download tutorial sample excel file as a .xlsx file [Flight_Routes_Request.xlsx](https://github.com/RobustaRPA/sample-processes/raw/main/file/Flight_Routes_Request.xlsx)
 
-You can download application file by right click and save as a .xml file [Excel Process_How-To.xml](https://github.com/RobustaRPA/sample-processes/raw/main/files/Excel_Process_How-To.xml)
+You can download application file by right click and save as a .xml file [Excel_Process_How_To.xml](/files/Excel_Process_How_To.xml)
 
 
 
