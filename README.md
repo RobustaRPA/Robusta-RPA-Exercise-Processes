@@ -17,7 +17,7 @@ You can download process explaining document as a .pdf file [Excel_automation_us
 
 You can download tutorial sample excel file as a .xlsx file [Flight_Routes_Request.xlsx](https://github.com/RobustaRPA/sample-processes/raw/main/file/Flight_Routes_Request.xlsx)
 
-You can download application file by right click and save as a .xml file [Excel_Process_How_To.xml](/files/Excel_Process_How_To.xml)
+You can download application file by right click and save as a .xml file [Excel_Process_How_To.xml](/file/Excel_Process_How_To.xml)
 
 
 
@@ -34,7 +34,7 @@ You can download application file by right click and save as a .xml file [Excel_
     
 You can download process explaining document as a .pdf file [EMail_automation_process_with_RobustaRPA.pdf](file/EMail_automation_process_with_RobustaRPA.pdf)
 
-You can download application file by right click and save as a .xml file [Email_Requests_How-To.xml](https://github.com/RobustaRPA/sample-processes/raw/main/files/Email_Requests_How-To.xml)
+You can download application file by right click and save as a .xml file [Email_Requests_How-To.xml](/file/Email_Requests_How_To.xml)
 
 
 ## Web Application with Robusta RPA
@@ -50,5 +50,5 @@ You can download application file by right click and save as a .xml file [Email_
 
 You can download process explaining document as a .pdf file [Web_Application_Process_using_Robusta.pdf](file/Web_Application_Process_using_Robusta.pdf)
 
-You can download application file by right click and save as a .xml file [Web Application_How-To.xml](https://github.com/RobustaRPA/sample-processes/raw/main/files/How_To-Web_Application.xml)
+You can download application file by right click and save as a .xml file [Web Application_How-To.xml](/file/How_To_Web_Application.xml)
 
