@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://flowable.org/test">
+  <process id="how_to_web_app" name="How To-Web Application" isExecutable="true">
+    <dataObject id="humanEffort" name="humanEffort" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>0</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="fromAirport" name="fromAirport" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>New York, NY (NYC)</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="toAirport" name="toAirport" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>Chicago, IL (CHI)</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="departureDate" name="departureDate" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>11/09/2021</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="returnDate" name="returnDate" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value>11/16/2021</flowable:value>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="ticketPrice" name="ticketPrice" itemSubjectRef="xsd:string">
+      <extensionElements>
+        <flowable:value></flowable:value>
+      </extensionElements>
+    </dataObject>
+    <serviceTask id="sid-78F1D490-8ABD-4571-9D37-2690F3E71EE6" name="Open: Booking.com" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebOpenTask" flowable:type="CustomWebOpen">
+      <extensionElements>
+        <flowable:field name="resultbrowser">
+          <flowable:string><![CDATA[bookingDemo]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="type">
+          <flowable:string><![CDATA[CHROME]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="url">
+          <flowable:string><![CDATA[https://booking.kayak.com/]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="pageload">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="timeout">
+          <flowable:string><![CDATA[180]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="maximize">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-816B9686-05B6-4640-B7EF-5A19503AECF0" sourceRef="sid-EF20830A-2474-44A7-8C69-6AA021FD3ED7" targetRef="sid-362D2F02-2B7E-440E-B383-5F510DE0D854"></sequenceFlow>
+    <sequenceFlow id="sid-0D664018-3290-46AC-8EDE-D2DF2E10D3E1" sourceRef="sid-362D2F02-2B7E-440E-B383-5F510DE0D854" targetRef="sid-8F1881BA-F615-459E-AC77-3B1AFB0F5E21"></sequenceFlow>
+    <sequenceFlow id="sid-EB24A09D-170D-4026-97DB-20128C5F8B47" sourceRef="sid-81C2548A-077F-4B4B-9672-208242EF71AB" targetRef="sid-191DC7EC-A505-473C-A791-14BDDC70BD0A"></sequenceFlow>
+    <sequenceFlow id="sid-720641F4-830C-42E8-8F72-6A9CC8E437BD" sourceRef="sid-BFFA06E4-C6AF-430F-8F2E-2A63663CE9B8" targetRef="sid-EF20830A-2474-44A7-8C69-6AA021FD3ED7"></sequenceFlow>
+    <sequenceFlow id="sid-9C5CF427-9EF6-46F1-85A5-B514F95F5D36" sourceRef="sid-0EA188DF-E822-449E-A088-7426AADBF071" targetRef="sid-9E05A29E-44B6-4EBD-8D43-9C0442F6DF4A"></sequenceFlow>
+    <sequenceFlow id="sid-67D01A4E-420A-4009-8C95-6A23BA35BCD6" sourceRef="sid-8F1881BA-F615-459E-AC77-3B1AFB0F5E21" targetRef="sid-0EA188DF-E822-449E-A088-7426AADBF071"></sequenceFlow>
+    <sequenceFlow id="sid-530A84F7-797A-427A-A66D-FA289ED95BEF" sourceRef="sid-57D779A9-6127-4F9E-A75F-D597DE37A8B1" targetRef="sid-55515FCF-3137-4329-98A1-3A3B718432DC"></sequenceFlow>
+    <sequenceFlow id="sid-A697FCC1-CAB1-4619-BF62-3F060A0CC0FA" sourceRef="sid-55515FCF-3137-4329-98A1-3A3B718432DC" targetRef="sid-98C5328A-49E8-43C8-9F8A-FB1F77203ED3"></sequenceFlow>
+    <sequenceFlow id="sid-08F9D57F-4CBA-4CC3-8B8E-AA492CE3DCD8" sourceRef="sid-98C5328A-49E8-43C8-9F8A-FB1F77203ED3" targetRef="sid-81C2548A-077F-4B4B-9672-208242EF71AB"></sequenceFlow>
+    <serviceTask id="sid-EF20830A-2474-44A7-8C69-6AA021FD3ED7" name="Set methods: From Airport" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebSetTask" flowable:type="CustomWebSet">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//input[@name="origin"]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="clear">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="action">
+          <flowable:string><![CDATA[text]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="text">
+          <flowable:expression><![CDATA[${fromAirport}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-BFFA06E4-C6AF-430F-8F2E-2A63663CE9B8" name="Mouse acitons: From Airport" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebMouseTask" flowable:type="CustomWebMouse">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="button">
+          <flowable:string><![CDATA[LEFT]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//div[contains(@id,"origin-airport-display-inner")]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="dbl">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="pageload">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="hover">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-362D2F02-2B7E-440E-B383-5F510DE0D854" name="Mouse actions: Select From Airport" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebMouseTask" flowable:type="CustomWebMouse">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="button">
+          <flowable:string><![CDATA[LEFT]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//div[@class="item-info"]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="dbl">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="pageload">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="hover">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-8F1881BA-F615-459E-AC77-3B1AFB0F5E21" name="Mouse actions: To Airport" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebMouseTask" flowable:type="CustomWebMouse">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="button">
+          <flowable:string><![CDATA[LEFT]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[/html/body/div[1]/div[1]/main/div[1]/div[1]/div/div[1]/div/div[2]/section[2]/div/div/div[2]/form[1]/div[1]/div/div[1]/div/div[3]/div/div/div]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="dbl">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="pageload">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="hover">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-0EA188DF-E822-449E-A088-7426AADBF071" name="Set methods: To Airport" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebSetTask" flowable:type="CustomWebSet">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//input[@name="destination"]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="clear">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="action">
+          <flowable:string><![CDATA[text]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="text">
+          <flowable:expression><![CDATA[${toAirport}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-9E05A29E-44B6-4EBD-8D43-9C0442F6DF4A" name="Mouse actions: Select To Airport" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebMouseTask" flowable:type="CustomWebMouse">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="button">
+          <flowable:string><![CDATA[LEFT]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[(//div[@class="item-info"])[2]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="dbl">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="pageload">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="hover">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-57D779A9-6127-4F9E-A75F-D597DE37A8B1" name="Mouse actions: Departure Date" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebMouseTask" flowable:type="CustomWebMouse">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="button">
+          <flowable:string><![CDATA[LEFT]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//div[contains(@id,"dateRangeInput-display-start-inner")]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="dbl">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="pageload">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="hover">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-55515FCF-3137-4329-98A1-3A3B718432DC" name="Set methods: Departure Date" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebSetTask" flowable:type="CustomWebSet">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//div[contains(@id,"depart-input")]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="clear">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="action">
+          <flowable:string><![CDATA[text]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="text">
+          <flowable:expression><![CDATA[${departureDate}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-81C2548A-077F-4B4B-9672-208242EF71AB" name="Set methods: Return Date" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebSetTask" flowable:type="CustomWebSet">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//div[contains(@id,"return-input")]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="clear">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="action">
+          <flowable:string><![CDATA[text]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="text">
+          <flowable:expression><![CDATA[${returnDate}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[true]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-191DC7EC-A505-473C-A791-14BDDC70BD0A" name="Mouse actions: Click Search" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebMouseTask" flowable:type="CustomWebMouse">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="button">
+          <flowable:string><![CDATA[LEFT]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[(//button[contains(@id,"submit")])[1]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="dbl">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="pageload">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="hover">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-98C5328A-49E8-43C8-9F8A-FB1F77203ED3" name="Mouse actions: Return Date" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebMouseTask" flowable:type="CustomWebMouse">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="button">
+          <flowable:string><![CDATA[LEFT]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//div[contains(@id,"dateRangeInput-display-end-inner")]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="dbl">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="pageload">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="visible">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="hover">
+          <flowable:string><![CDATA[false]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-D7AFFA39-CDD4-4C62-8C8F-DD0AAFBB03AD" name="Functions: Get Ticket Row Count" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebFunctionTask" flowable:type="CustomWebFunction">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//*[@class="resultWrapper"]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultvariable">
+          <flowable:string><![CDATA[ticketRowCount]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="action">
+          <flowable:string><![CDATA[elementcount]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <endEvent id="sid-A6BD785D-F07B-4723-ADD7-C3D64C2CA6A7"></endEvent>
+    <sequenceFlow id="sid-B1F52CDC-7789-49E0-AE8A-3A431E2F022F" sourceRef="sid-CA42D124-1C97-4A67-BD22-DD651615CE28" targetRef="sid-78F1D490-8ABD-4571-9D37-2690F3E71EE6"></sequenceFlow>
+    <sequenceFlow id="sid-389E6412-1FCD-4654-A63B-FB2BBBBF8C72" sourceRef="sid-9E05A29E-44B6-4EBD-8D43-9C0442F6DF4A" targetRef="sid-57D779A9-6127-4F9E-A75F-D597DE37A8B1"></sequenceFlow>
+    <sequenceFlow id="sid-50D8AA6C-34AB-4F2F-AF11-0D85FF260444" sourceRef="sid-78F1D490-8ABD-4571-9D37-2690F3E71EE6" targetRef="sid-BFFA06E4-C6AF-430F-8F2E-2A63663CE9B8"></sequenceFlow>
+    <serviceTask id="sid-9F0F5BF7-E309-484C-8871-C02A6A9E60D8" name="Get methods: Ticket Price" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebGetTask" flowable:type="CustomWebGet">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//span[@class="price option-text"]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="action">
+          <flowable:string><![CDATA[text]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultvariable">
+          <flowable:string><![CDATA[ticketPrice]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="sid-7C860F83-FB36-419B-9A5A-D9A8E2843B32" name="Functions: Is there a best ticket" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebFunctionTask" flowable:type="CustomWebFunction">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//*[@class="bfLabel bf-best"]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="resultvariable">
+          <flowable:string><![CDATA[bestPriceFlag]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="action">
+          <flowable:string><![CDATA[exists]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <exclusiveGateway id="sid-C2B09F68-C26D-4F02-8C22-B31F23BD019F" flowable:async="true" flowable:exclusive="false" default="sid-D796E63B-A7C6-4815-9160-353C1375F67A"></exclusiveGateway>
+    <scriptTask id="sid-4B88204A-89DA-4178-B788-85309C985D36" name="Script task: No best ticket" flowable:async="true" flowable:exclusive="false" scriptFormat="javascript" flowable:autoStoreVariables="false">
+      <script><![CDATA[execution.getVariable("ticketPrice");
+execution.getVariable("Note");
+
+ticketPrice = "";
+Note= "No matching best ticket is found.";
+
+execution.setVariable("ticketPrice",ticketPrice);
+execution.setVariable("Note",Note);]]></script>
+    </scriptTask>
+    <scriptTask id="sid-F58E9047-5D8F-43A3-B985-23EF99D84207" name="Script task: Found best ticket" flowable:async="true" flowable:exclusive="false" scriptFormat="javascript" flowable:autoStoreVariables="false">
+      <script><![CDATA[execution.getVariable("Note");
+
+Note = "Best ticket is found.";
+
+execution.setVariable("Note",Note);]]></script>
+    </scriptTask>
+    <scriptTask id="sid-D3804969-D872-49AA-9845-205096DB1A4A" name="Script task: No ticket" flowable:async="true" flowable:exclusive="false" scriptFormat="javascript" flowable:autoStoreVariables="false">
+      <script><![CDATA[execution.getVariable("ticketPrice");
+execution.getVariable("Note");
+
+ticketPrice = "";
+Note= "No matching ticket is found.";
+
+execution.setVariable("ticketPrice",ticketPrice);
+execution.setVariable("Note",Note);]]></script>
+    </scriptTask>
+    <endEvent id="sid-01BC7A69-104C-494C-A587-5B30557007EE"></endEvent>
+    <endEvent id="sid-9B708A3E-4CAF-4C50-8FE8-EAB34D6A28DD"></endEvent>
+    <startEvent id="sid-CA42D124-1C97-4A67-BD22-DD651615CE28" flowable:formFieldValidation="true"></startEvent>
+    <serviceTask id="sid-99C7FAED-F799-4108-9B90-E44CA8BE198F" name="Wait actions: Check if loaded" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebWaitTask" flowable:type="CustomWebWait">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+        <flowable:field name="field">
+          <flowable:string><![CDATA[//*[@class="col-advice"]//*[@aria-busy="false"]]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="action">
+          <flowable:string><![CDATA[visible]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-9ADCE0ED-B894-4F63-9BEA-840CE3345FBC" sourceRef="sid-191DC7EC-A505-473C-A791-14BDDC70BD0A" targetRef="sid-99C7FAED-F799-4108-9B90-E44CA8BE198F"></sequenceFlow>
+    <serviceTask id="sid-3FBE8BBC-F390-43B2-98FE-8AC8EB404CC8" name="Close: booking.com" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebCloseTask" flowable:type="CustomWebClose">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-E97C34AB-8AB9-464C-9499-37A8F19A6775" sourceRef="sid-3FBE8BBC-F390-43B2-98FE-8AC8EB404CC8" targetRef="sid-A6BD785D-F07B-4723-ADD7-C3D64C2CA6A7"></sequenceFlow>
+    <exclusiveGateway id="sid-12198C83-D1A7-42D4-8BF9-E8A96E2686A9" flowable:async="true" flowable:exclusive="false" default="sid-43607B58-F6A6-4FD5-B4E6-FC1758B94F72"></exclusiveGateway>
+    <sequenceFlow id="sid-8DA57234-C3F1-44BE-9646-7781B5373F0C" sourceRef="sid-7C860F83-FB36-419B-9A5A-D9A8E2843B32" targetRef="sid-12198C83-D1A7-42D4-8BF9-E8A96E2686A9"></sequenceFlow>
+    <scriptTask id="sid-4E69F68B-B1E4-453F-9D8C-1C278C5D609B" name="Script task: Could not be loaded" flowable:async="true" flowable:exclusive="false" scriptFormat="javascript" flowable:autoStoreVariables="false">
+      <script><![CDATA[execution.getVariable("ticketPrice");
+execution.getVariable("Note");
+
+ticketPrice = "";
+Note= "No matching ticket is found.";
+
+execution.setVariable("ticketPrice",ticketPrice);
+execution.setVariable("Note",Note);]]></script>
+    </scriptTask>
+    <serviceTask id="sid-E98166AD-E39A-4169-8E18-023B62A6E3B4" name="Close: booking.com" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebCloseTask" flowable:type="CustomWebClose">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <endEvent id="sid-C65DC72E-6804-48E0-94A3-9EC4E4B47B66"></endEvent>
+    <sequenceFlow id="sid-0E91F519-9069-47B9-9877-3363A36D1E8D" sourceRef="sid-D7AFFA39-CDD4-4C62-8C8F-DD0AAFBB03AD" targetRef="sid-C2B09F68-C26D-4F02-8C22-B31F23BD019F"></sequenceFlow>
+    <sequenceFlow id="sid-DAA97B75-609A-4CAE-9742-0F4C47C87D00" sourceRef="sid-F58E9047-5D8F-43A3-B985-23EF99D84207" targetRef="sid-9F0F5BF7-E309-484C-8871-C02A6A9E60D8"></sequenceFlow>
+    <sequenceFlow id="sid-3E9672FC-366F-4BE0-A097-A2C6EACF937B" sourceRef="sid-9F0F5BF7-E309-484C-8871-C02A6A9E60D8" targetRef="sid-3FBE8BBC-F390-43B2-98FE-8AC8EB404CC8"></sequenceFlow>
+    <serviceTask id="sid-B8C19501-FE57-44EF-B174-8BD55032CDDA" name="Close: booking.com" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebCloseTask" flowable:type="CustomWebClose">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-2E51C976-EE30-449F-84EF-CB3556D09543" sourceRef="sid-D3804969-D872-49AA-9845-205096DB1A4A" targetRef="sid-B8C19501-FE57-44EF-B174-8BD55032CDDA"></sequenceFlow>
+    <sequenceFlow id="sid-A8B0CE8F-7BCC-4948-A393-CD559F13EC82" sourceRef="sid-B8C19501-FE57-44EF-B174-8BD55032CDDA" targetRef="sid-9B708A3E-4CAF-4C50-8FE8-EAB34D6A28DD"></sequenceFlow>
+    <serviceTask id="sid-C7F2A397-FEEE-4985-BAD9-CC1FD3F39220" name="Close: booking.com" flowable:async="true" flowable:exclusive="false" flowable:class="com.robusta.robot.web.WebCloseTask" flowable:type="CustomWebClose">
+      <extensionElements>
+        <flowable:field name="browserId">
+          <flowable:expression><![CDATA[${bookingDemo}]]></flowable:expression>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-F3C516BE-7330-4568-8909-F19B2A455C6D" sourceRef="sid-4B88204A-89DA-4178-B788-85309C985D36" targetRef="sid-C7F2A397-FEEE-4985-BAD9-CC1FD3F39220"></sequenceFlow>
+    <sequenceFlow id="sid-75B166E0-A8DE-4909-A088-29489313114C" sourceRef="sid-C7F2A397-FEEE-4985-BAD9-CC1FD3F39220" targetRef="sid-01BC7A69-104C-494C-A587-5B30557007EE"></sequenceFlow>
+    <sequenceFlow id="sid-8CFBEF86-6671-4662-9951-B5CC04542114" sourceRef="sid-4E69F68B-B1E4-453F-9D8C-1C278C5D609B" targetRef="sid-E98166AD-E39A-4169-8E18-023B62A6E3B4"></sequenceFlow>
+    <sequenceFlow id="sid-DFB54F8A-E5CF-4D77-B14A-F6D5A0327F5B" sourceRef="sid-E98166AD-E39A-4169-8E18-023B62A6E3B4" targetRef="sid-C65DC72E-6804-48E0-94A3-9EC4E4B47B66"></sequenceFlow>
+    <sequenceFlow id="sid-D796E63B-A7C6-4815-9160-353C1375F67A" sourceRef="sid-C2B09F68-C26D-4F02-8C22-B31F23BD019F" targetRef="sid-7C860F83-FB36-419B-9A5A-D9A8E2843B32"></sequenceFlow>
+    <sequenceFlow id="sid-43607B58-F6A6-4FD5-B4E6-FC1758B94F72" sourceRef="sid-12198C83-D1A7-42D4-8BF9-E8A96E2686A9" targetRef="sid-4B88204A-89DA-4178-B788-85309C985D36"></sequenceFlow>
+    <boundaryEvent id="sid-FDCD3093-30FB-4A37-86B7-8BA01F7D3747" attachedToRef="sid-99C7FAED-F799-4108-9B90-E44CA8BE198F">
+      <errorEventDefinition></errorEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="sid-A84A21A8-392A-4C74-9D30-F12957EA8B8A" sourceRef="sid-12198C83-D1A7-42D4-8BF9-E8A96E2686A9" targetRef="sid-F58E9047-5D8F-43A3-B985-23EF99D84207">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${bestPriceFlag==true}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-11B819F0-3BB8-4742-B215-D1FB534E9EC5" name="No ticket" sourceRef="sid-C2B09F68-C26D-4F02-8C22-B31F23BD019F" targetRef="sid-D3804969-D872-49AA-9845-205096DB1A4A">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ticketRowCount==0}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-28F13677-3952-482C-A944-6B0E997040C5" sourceRef="sid-FDCD3093-30FB-4A37-86B7-8BA01F7D3747" targetRef="sid-4E69F68B-B1E4-453F-9D8C-1C278C5D609B"></sequenceFlow>
+    <sequenceFlow id="sid-538CD370-D9A1-4E6C-96C7-57CE86B8D9C6" sourceRef="sid-99C7FAED-F799-4108-9B90-E44CA8BE198F" targetRef="sid-D7AFFA39-CDD4-4C62-8C8F-DD0AAFBB03AD"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_how_to_web_app">
+    <bpmndi:BPMNPlane bpmnElement="how_to_web_app" id="BPMNPlane_how_to_web_app">
+      <bpmndi:BPMNShape bpmnElement="sid-78F1D490-8ABD-4571-9D37-2690F3E71EE6" id="BPMNShape_sid-78F1D490-8ABD-4571-9D37-2690F3E71EE6">
+        <omgdc:Bounds height="79.99999999999994" width="99.99999999999977" x="293.8905181447308" y="77.43524049639709"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-EF20830A-2474-44A7-8C69-6AA021FD3ED7" id="BPMNShape_sid-EF20830A-2474-44A7-8C69-6AA021FD3ED7">
+        <omgdc:Bounds height="80.0" width="100.0" x="631.291194915413" y="77.43524049639731"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-BFFA06E4-C6AF-430F-8F2E-2A63663CE9B8" id="BPMNShape_sid-BFFA06E4-C6AF-430F-8F2E-2A63663CE9B8">
+        <omgdc:Bounds height="80.0" width="100.0" x="460.55718432082426" y="77.43524049639703"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-362D2F02-2B7E-440E-B383-5F510DE0D854" id="BPMNShape_sid-362D2F02-2B7E-440E-B383-5F510DE0D854">
+        <omgdc:Bounds height="80.0" width="99.99999999999977" x="802.3057214891911" y="77.43524049639703"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-8F1881BA-F615-459E-AC77-3B1AFB0F5E21" id="BPMNShape_sid-8F1881BA-F615-459E-AC77-3B1AFB0F5E21">
+        <omgdc:Bounds height="80.0" width="100.0" x="973.0464903319044" y="77.43524049639731"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-0EA188DF-E822-449E-A088-7426AADBF071" id="BPMNShape_sid-0EA188DF-E822-449E-A088-7426AADBF071">
+        <omgdc:Bounds height="80.00000000000003" width="100.0" x="973.0464903319044" y="221.46816777136914"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9E05A29E-44B6-4EBD-8D43-9C0442F6DF4A" id="BPMNShape_sid-9E05A29E-44B6-4EBD-8D43-9C0442F6DF4A">
+        <omgdc:Bounds height="79.99999999999997" width="99.99999999999977" x="806.1429387400649" y="221.46816777136908"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-57D779A9-6127-4F9E-A75F-D597DE37A8B1" id="BPMNShape_sid-57D779A9-6127-4F9E-A75F-D597DE37A8B1">
+        <omgdc:Bounds height="80.00000000000006" width="100.0" x="631.291194915413" y="221.4681677713691"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-55515FCF-3137-4329-98A1-3A3B718432DC" id="BPMNShape_sid-55515FCF-3137-4329-98A1-3A3B718432DC">
+        <omgdc:Bounds height="79.99999999999983" width="100.0" x="460.55718432082426" y="221.46816777136922"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-81C2548A-077F-4B4B-9672-208242EF71AB" id="BPMNShape_sid-81C2548A-077F-4B4B-9672-208242EF71AB">
+        <omgdc:Bounds height="79.99999999999977" width="100.0" x="297.7277353956043" y="386.0772275141942"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-191DC7EC-A505-473C-A791-14BDDC70BD0A" id="BPMNShape_sid-191DC7EC-A505-473C-A791-14BDDC70BD0A">
+        <omgdc:Bounds height="79.99999999999966" width="100.0" x="460.55718432082426" y="386.0772275141942"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-98C5328A-49E8-43C8-9F8A-FB1F77203ED3" id="BPMNShape_sid-98C5328A-49E8-43C8-9F8A-FB1F77203ED3">
+        <omgdc:Bounds height="79.9999999999996" width="99.99999999999977" x="297.72773539560444" y="221.46816777136934"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-D7AFFA39-CDD4-4C62-8C8F-DD0AAFBB03AD" id="BPMNShape_sid-D7AFFA39-CDD4-4C62-8C8F-DD0AAFBB03AD">
+        <omgdc:Bounds height="79.99999999999977" width="100.0" x="631.291194915413" y="530.0482010006697"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A6BD785D-F07B-4723-ADD7-C3D64C2CA6A7" id="BPMNShape_sid-A6BD785D-F07B-4723-ADD7-C3D64C2CA6A7">
+        <omgdc:Bounds height="28.0" width="28.0" x="1133.1269054655272" y="1006.7378738702403"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9F0F5BF7-E309-484C-8871-C02A6A9E60D8" id="BPMNShape_sid-9F0F5BF7-E309-484C-8871-C02A6A9E60D8">
+        <omgdc:Bounds height="80.0" width="100.00000000000011" x="806.1429387400649" y="980.7378738702403"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-7C860F83-FB36-419B-9A5A-D9A8E2843B32" id="BPMNShape_sid-7C860F83-FB36-419B-9A5A-D9A8E2843B32">
+        <omgdc:Bounds height="80.00000000000023" width="100.0" x="631.291194915413" y="735.2953469998446"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-C2B09F68-C26D-4F02-8C22-B31F23BD019F" id="BPMNShape_sid-C2B09F68-C26D-4F02-8C22-B31F23BD019F">
+        <omgdc:Bounds height="40.0" width="40.0" x="661.291194915413" y="652.9908171284319"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-4B88204A-89DA-4178-B788-85309C985D36" id="BPMNShape_sid-4B88204A-89DA-4178-B788-85309C985D36">
+        <omgdc:Bounds height="80.0" width="100.00000000000023" x="806.1429387400648" y="858.7521418069634"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-F58E9047-5D8F-43A3-B985-23EF99D84207" id="BPMNShape_sid-F58E9047-5D8F-43A3-B985-23EF99D84207">
+        <omgdc:Bounds height="80.0" width="100.0" x="631.291194915413" y="980.7378738702403"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-D3804969-D872-49AA-9845-205096DB1A4A" id="BPMNShape_sid-D3804969-D872-49AA-9845-205096DB1A4A">
+        <omgdc:Bounds height="80.0" width="99.99999999999966" x="806.142938740065" y="632.9908171284319"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-01BC7A69-104C-494C-A587-5B30557007EE" id="BPMNShape_sid-01BC7A69-104C-494C-A587-5B30557007EE">
+        <omgdc:Bounds height="28.0" width="28.0" x="1133.1269054655272" y="884.7521418069634"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9B708A3E-4CAF-4C50-8FE8-EAB34D6A28DD" id="BPMNShape_sid-9B708A3E-4CAF-4C50-8FE8-EAB34D6A28DD">
+        <omgdc:Bounds height="28.0" width="28.0" x="1133.1269054655272" y="658.9908171284319"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-CA42D124-1C97-4A67-BD22-DD651615CE28" id="BPMNShape_sid-CA42D124-1C97-4A67-BD22-DD651615CE28">
+        <omgdc:Bounds height="30.0" width="30.00000000000003" x="232.3057214891911" y="102.43524049639731"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-99C7FAED-F799-4108-9B90-E44CA8BE198F" id="BPMNShape_sid-99C7FAED-F799-4108-9B90-E44CA8BE198F">
+        <omgdc:Bounds height="80.00000000000011" width="100.0" x="631.291194915413" y="386.0772275141941"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-3FBE8BBC-F390-43B2-98FE-8AC8EB404CC8" id="BPMNShape_sid-3FBE8BBC-F390-43B2-98FE-8AC8EB404CC8">
+        <omgdc:Bounds height="80.0" width="100.0" x="973.0464903319044" y="980.7378738702403"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-12198C83-D1A7-42D4-8BF9-E8A96E2686A9" id="BPMNShape_sid-12198C83-D1A7-42D4-8BF9-E8A96E2686A9">
+        <omgdc:Bounds height="40.0" width="40.0" x="661.291194915413" y="878.7521418069634"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-4E69F68B-B1E4-453F-9D8C-1C278C5D609B" id="BPMNShape_sid-4E69F68B-B1E4-453F-9D8C-1C278C5D609B">
+        <omgdc:Bounds height="79.99999999999977" width="99.99999999999977" x="806.1429387400649" y="386.0772275141943"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-E98166AD-E39A-4169-8E18-023B62A6E3B4" id="BPMNShape_sid-E98166AD-E39A-4169-8E18-023B62A6E3B4">
+        <omgdc:Bounds height="80.00000000000011" width="99.99999999999977" x="973.0464903319044" y="386.0772275141941"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-C65DC72E-6804-48E0-94A3-9EC4E4B47B66" id="BPMNShape_sid-C65DC72E-6804-48E0-94A3-9EC4E4B47B66">
+        <omgdc:Bounds height="28.0" width="28.0" x="1133.1269054655272" y="412.0772275141941"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-B8C19501-FE57-44EF-B174-8BD55032CDDA" id="BPMNShape_sid-B8C19501-FE57-44EF-B174-8BD55032CDDA">
+        <omgdc:Bounds height="80.0" width="100.0" x="973.0464903319044" y="632.9908171284319"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-C7F2A397-FEEE-4985-BAD9-CC1FD3F39220" id="BPMNShape_sid-C7F2A397-FEEE-4985-BAD9-CC1FD3F39220">
+        <omgdc:Bounds height="80.0" width="100.0" x="973.0464903319044" y="858.7521418069634"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-FDCD3093-30FB-4A37-86B7-8BA01F7D3747" id="BPMNShape_sid-FDCD3093-30FB-4A37-86B7-8BA01F7D3747">
+        <omgdc:Bounds height="30.0" width="30.0" x="717.1588819865808" y="413.6332453518276"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-720641F4-830C-42E8-8F72-6A9CC8E437BD" id="BPMNEdge_sid-720641F4-830C-42E8-8F72-6A9CC8E437BD">
+        <omgdi:waypoint x="560.5071843208243" y="117.43524049639711"></omgdi:waypoint>
+        <omgdi:waypoint x="631.291194915413" y="117.43524049639724"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-D796E63B-A7C6-4815-9160-353C1375F67A" id="BPMNEdge_sid-D796E63B-A7C6-4815-9160-353C1375F67A">
+        <omgdi:waypoint x="681.6974182598966" y="692.5249110048179"></omgdi:waypoint>
+        <omgdi:waypoint x="681.487404259194" y="735.2953469998446"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-DAA97B75-609A-4CAE-9742-0F4C47C87D00" id="BPMNEdge_sid-DAA97B75-609A-4CAE-9742-0F4C47C87D00">
+        <omgdi:waypoint x="731.241194915413" y="1020.7378738702403"></omgdi:waypoint>
+        <omgdi:waypoint x="806.1429387395042" y="1020.7378738702403"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-43607B58-F6A6-4FD5-B4E6-FC1758B94F72" id="BPMNEdge_sid-43607B58-F6A6-4FD5-B4E6-FC1758B94F72">
+        <omgdi:waypoint x="700.7902171316291" y="899.1974975463366"></omgdi:waypoint>
+        <omgdi:waypoint x="806.1429387400466" y="898.8953867178094"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-3E9672FC-366F-4BE0-A097-A2C6EACF937B" id="BPMNEdge_sid-3E9672FC-366F-4BE0-A097-A2C6EACF937B">
+        <omgdi:waypoint x="906.0929387397989" y="1020.7378738702403"></omgdi:waypoint>
+        <omgdi:waypoint x="973.0464903318722" y="1020.7378738702403"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-538CD370-D9A1-4E6C-96C7-57CE86B8D9C6" id="BPMNEdge_sid-538CD370-D9A1-4E6C-96C7-57CE86B8D9C6">
+        <omgdi:waypoint x="681.291194915413" y="466.02722751419424"></omgdi:waypoint>
+        <omgdi:waypoint x="681.291194915413" y="530.0482010006697"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-67D01A4E-420A-4009-8C95-6A23BA35BCD6" id="BPMNEdge_sid-67D01A4E-420A-4009-8C95-6A23BA35BCD6">
+        <omgdi:waypoint x="1023.0464903319044" y="157.38524049639733"></omgdi:waypoint>
+        <omgdi:waypoint x="1023.0464903319044" y="221.46816777136914"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-EB24A09D-170D-4026-97DB-20128C5F8B47" id="BPMNEdge_sid-EB24A09D-170D-4026-97DB-20128C5F8B47">
+        <omgdi:waypoint x="397.67773539550785" y="426.0772275141941"></omgdi:waypoint>
+        <omgdi:waypoint x="347.7277353956043" y="426.077227514194"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-28F13677-3952-482C-A944-6B0E997040C5" id="BPMNEdge_sid-28F13677-3952-482C-A944-6B0E997040C5">
+        <omgdi:waypoint x="747.1088804791425" y="428.6332453518276"></omgdi:waypoint>
+        <omgdi:waypoint x="806.142938739991" y="428.6332453518276"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-75B166E0-A8DE-4909-A088-29489313114C" id="BPMNEdge_sid-75B166E0-A8DE-4909-A088-29489313114C">
+        <omgdi:waypoint x="1072.9964903319044" y="898.7521418069634"></omgdi:waypoint>
+        <omgdi:waypoint x="1133.1269054655272" y="898.7521418069634"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-A84A21A8-392A-4C74-9D30-F12957EA8B8A" id="BPMNEdge_sid-A84A21A8-392A-4C74-9D30-F12957EA8B8A">
+        <omgdi:waypoint x="681.7126732596936" y="918.2725671151701"></omgdi:waypoint>
+        <omgdi:waypoint x="681.4556175159995" y="980.7378738702403"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B1F52CDC-7789-49E0-AE8A-3A431E2F022F" id="BPMNEdge_sid-B1F52CDC-7789-49E0-AE8A-3A431E2F022F">
+        <omgdi:waypoint x="262.25571732019677" y="117.43524049639724"></omgdi:waypoint>
+        <omgdi:waypoint x="293.89051814470605" y="117.43524049639707"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-816B9686-05B6-4640-B7EF-5A19503AECF0" id="BPMNEdge_sid-816B9686-05B6-4640-B7EF-5A19503AECF0">
+        <omgdi:waypoint x="731.2411949153568" y="117.43524049639723"></omgdi:waypoint>
+        <omgdi:waypoint x="801.0013635170576" y="117.4352404963971"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-8DA57234-C3F1-44BE-9646-7781B5373F0C" id="BPMNEdge_sid-8DA57234-C3F1-44BE-9646-7781B5373F0C">
+        <omgdi:waypoint x="681.4523397726279" y="815.2453469998447"></omgdi:waypoint>
+        <omgdi:waypoint x="681.7101949184859" y="879.1711418100363"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-A8B0CE8F-7BCC-4948-A393-CD559F13EC82" id="BPMNEdge_sid-A8B0CE8F-7BCC-4948-A393-CD559F13EC82">
+        <omgdi:waypoint x="1072.996490331739" y="672.9908171284319"></omgdi:waypoint>
+        <omgdi:waypoint x="1133.1269054655272" y="672.9908171284319"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-0E91F519-9069-47B9-9877-3363A36D1E8D" id="BPMNEdge_sid-0E91F519-9069-47B9-9877-3363A36D1E8D">
+        <omgdi:waypoint x="681.4842971468505" y="609.9982010006694"></omgdi:waypoint>
+        <omgdi:waypoint x="681.6940534168175" y="653.3936756298364"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-08F9D57F-4CBA-4CC3-8B8E-AA492CE3DCD8" id="BPMNEdge_sid-08F9D57F-4CBA-4CC3-8B8E-AA492CE3DCD8">
+        <omgdi:waypoint x="347.7277353956043" y="301.418167771369"></omgdi:waypoint>
+        <omgdi:waypoint x="347.7277353956043" y="386.0772275141942"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-F3C516BE-7330-4568-8909-F19B2A455C6D" id="BPMNEdge_sid-F3C516BE-7330-4568-8909-F19B2A455C6D">
+        <omgdi:waypoint x="906.0929387397989" y="898.7521418069634"></omgdi:waypoint>
+        <omgdi:waypoint x="973.0464903314926" y="898.7521418069634"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-530A84F7-797A-427A-A66D-FA289ED95BEF" id="BPMNEdge_sid-530A84F7-797A-427A-A66D-FA289ED95BEF">
+        <omgdi:waypoint x="631.2911949153986" y="261.46816777136917"></omgdi:waypoint>
+        <omgdi:waypoint x="560.5071843208243" y="261.46816777136917"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-11B819F0-3BB8-4742-B215-D1FB534E9EC5" id="BPMNEdge_sid-11B819F0-3BB8-4742-B215-D1FB534E9EC5">
+        <omgdi:waypoint x="700.8094412618557" y="673.4147268816401"></omgdi:waypoint>
+        <omgdi:waypoint x="806.142938740065" y="672.9946064654247"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-A697FCC1-CAB1-4619-BF62-3F060A0CC0FA" id="BPMNEdge_sid-A697FCC1-CAB1-4619-BF62-3F060A0CC0FA">
+        <omgdi:waypoint x="460.5571843207216" y="261.46816777136917"></omgdi:waypoint>
+        <omgdi:waypoint x="397.67773539560426" y="261.46816777136917"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-50D8AA6C-34AB-4F2F-AF11-0D85FF260444" id="BPMNEdge_sid-50D8AA6C-34AB-4F2F-AF11-0D85FF260444">
+        <omgdi:waypoint x="393.8405181447092" y="117.43524049639704"></omgdi:waypoint>
+        <omgdi:waypoint x="460.5571843207879" y="117.43524049639703"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-DFB54F8A-E5CF-4D77-B14A-F6D5A0327F5B" id="BPMNEdge_sid-DFB54F8A-E5CF-4D77-B14A-F6D5A0327F5B">
+        <omgdi:waypoint x="1072.9964903318235" y="426.0772275141941"></omgdi:waypoint>
+        <omgdi:waypoint x="1133.1269054655272" y="426.0772275141941"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-9C5CF427-9EF6-46F1-85A5-B514F95F5D36" id="BPMNEdge_sid-9C5CF427-9EF6-46F1-85A5-B514F95F5D36">
+        <omgdi:waypoint x="973.0464903319044" y="261.4681677713691"></omgdi:waypoint>
+        <omgdi:waypoint x="906.0929387400646" y="261.4681677713691"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-9ADCE0ED-B894-4F63-9BEA-840CE3345FBC" id="BPMNEdge_sid-9ADCE0ED-B894-4F63-9BEA-840CE3345FBC">
+        <omgdi:waypoint x="560.5071843208243" y="426.0772275141941"></omgdi:waypoint>
+        <omgdi:waypoint x="631.2911949152647" y="426.0772275141941"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-8CFBEF86-6671-4662-9951-B5CC04542114" id="BPMNEdge_sid-8CFBEF86-6671-4662-9951-B5CC04542114">
+        <omgdi:waypoint x="906.0929387399887" y="426.0772275141942"></omgdi:waypoint>
+        <omgdi:waypoint x="856.1429387400649" y="426.07722751419413"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-E97C34AB-8AB9-464C-9499-37A8F19A6775" id="BPMNEdge_sid-E97C34AB-8AB9-464C-9499-37A8F19A6775">
+        <omgdi:waypoint x="1072.9964903319044" y="1020.7378738702403"></omgdi:waypoint>
+        <omgdi:waypoint x="1133.1269054655272" y="1020.7378738702403"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-2E51C976-EE30-449F-84EF-CB3556D09543" id="BPMNEdge_sid-2E51C976-EE30-449F-84EF-CB3556D09543">
+        <omgdi:waypoint x="906.0929387397989" y="672.9908171284319"></omgdi:waypoint>
+        <omgdi:waypoint x="973.0464903314926" y="672.9908171284319"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-0D664018-3290-46AC-8EDE-D2DF2E10D3E1" id="BPMNEdge_sid-0D664018-3290-46AC-8EDE-D2DF2E10D3E1">
+        <omgdi:waypoint x="902.2557214891737" y="117.43524049639711"></omgdi:waypoint>
+        <omgdi:waypoint x="973.0464903319044" y="117.43524049639723"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-389E6412-1FCD-4654-A63B-FB2BBBBF8C72" id="BPMNEdge_sid-389E6412-1FCD-4654-A63B-FB2BBBBF8C72">
+        <omgdi:waypoint x="768.7170668277389" y="261.46816777136905"></omgdi:waypoint>
+        <omgdi:waypoint x="731.241194915413" y="261.4681677713691"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
