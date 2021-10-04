@@ -1,4 +1,4 @@
-# Sample Processes
+# Exercise Processes
 
 ## Excel Automation using Robusta
 
