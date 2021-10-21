@@ -50,5 +50,10 @@ You can download application file by right click and save as a .xml file [Email_
 
 You can download process explaining document as a .pdf file [Web_Application_Process_using_Robusta.pdf](file/Web_Application_Process_using_Robusta.pdf)
 
+*(In order to easily copy and paste Xpath parameter values to the actual fields of your process, you have to download .pdf file then open it with in a PDF viewer)*
+
+
 You can download application file by right click and save as a .xml file [Web Application_How-To.xml](/file/How_To_Web_Application.xml)
+
+
 
